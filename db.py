@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-CON_STRING =  os.environ['CON_STRING']
+CON_STRING =  os.getenv('CON_STRING')
 
 client = MongoClient(CON_STRING)
 
@@ -22,3 +22,4 @@ def load_reviews():
     reviews = list(reviews_collection.find())
     return reviews
 
+print(client)
