@@ -4,18 +4,43 @@
     <title>Review Submitted</title>
     <style>
         body {
-            background-color: #120a0a;
+            background-color: #000000; /* Light blue shade */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         .container {
             text-align: center;
             padding: 20px;
-            margin: 100px auto;
-            background-color: #323131;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: rgba(98, 97, 100, 0.441);
+            border-radius: 10px;
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+            color: #fafbfc; /* Text color */
+            max-width: 400px;
+            width: 90%;
+            opacity: 0;
+            animation: fade-in 2s ease-in-out forwards;
+        }
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0.6;
+            }
         }
         h1 {
-            color: #ddd6d6;
+            color: #fefefe; /* Header text color */
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #f0f7ff; /* Paragraph text color */
+            font-size: 1.2em;
         }
     </style>
 </head>
@@ -25,4 +50,23 @@
         <p>Thank you for submitting your review. We appreciate your feedback!</p>
     </div>
 </body>
-</html> 
+</html>
+<style>
+    /* ...existing styles... */
+
+    .container {
+        /* ...existing styles... */
+        animation: slide-in 1s ease-in-out forwards;
+    }
+
+    @keyframes slide-in {
+        0% {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+        100% {
+            opacity: 0.6;
+            transform: translateY(0);
+        }
+    }
+</style>
