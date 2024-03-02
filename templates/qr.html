@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/qrcode.min.js"></script>
+</head>
+<body>
+    <div id="qrcode"></div>
+
+    <script>
+        // Generate QR code
+        var qrCodeDiv = document.getElementById("qrcode");
+        var qrCode = new QRCode(qrCodeDiv, {
+            text: "https://example.com", // Replace with your desired URL or text
+            width: 128,
+            height: 128
+        });
+    </script>
+</body>
+</html>

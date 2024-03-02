@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reviews Page</title>
+    <style>
+
+        #review {
+            background-color: #1f1e1e;
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: white;
+            text-align: center;
+            display: flex;
+            gap: 20px;
+        }   
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        
+    </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <h1>Reviews</h1>
+    
+    <div id="container">
+
+        {% for review in reviews %}
+            <div id="review">
+                <div id="username">{{ review.username }}:</div>
+                <div id="message">{{ review.review }}</div>
+            </div>
+        {% endfor %}
+    
+    </div>
+
+
+
+
+<script>
+// Function to reload the page after every 2 seconds
+function reloadPage() {
+    setTimeout(function() {
+        location.reload();
+    }, 2000);
+}
+
+// Call the reloadPage function
+reloadPage();
+</script>
+</body>
+</html>
+        
