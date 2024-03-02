@@ -1,12 +1,6 @@
 from pymongo import MongoClient
-import os
-from dotenv import load_dotenv
 
-
-load_dotenv()
-CON_STRING =  os.getenv('CON_STRING')
-
-client = MongoClient(CON_STRING)
+client = MongoClient("mongodb+srv://subi:subi@reviewapp.wgo96zx.mongodb.net/?retryWrites=true&w=majority&appName=ReviewApp")
 
 db = client.get_database('ReviewDB')
 
@@ -21,5 +15,3 @@ def save_review(username, review):
 def load_reviews():
     reviews = list(reviews_collection.find())
     return reviews
-
-print(CON_STRING)
