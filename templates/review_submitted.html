@@ -20,17 +20,19 @@
             border-radius: 10px;
             /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
             color: #fafbfc; /* Text color */
-            max-width: 400px;
+            max-width: 600px;
             width: 90%;
             opacity: 0;
-            animation: fade-in 2s ease-in-out forwards;
+            animation: slide-in-fade 2s ease-in-out forwards;
         }
-        @keyframes fade-in {
+        @keyframes slide-in-fade {
             0% {
                 opacity: 0;
+                transform: translateY(-100%);
             }
             100% {
                 opacity: 0.6;
+                transform: translateY(0);
             }
         }
         h1 {
@@ -42,24 +44,6 @@
             color: #f0f7ff; /* Paragraph text color */
             font-size: 1.2em;
         }
-
-        @keyframes slide-in {
-        0% {
-            opacity: 0;
-            transform: translateY(-100%);
-        }
-        100% {
-            opacity: 0.6;
-            transform: translateY(0);
-        }
-    }
-
-    /* Media query for mobile devices */
-    @media only screen and (max-width: 600px) {
-        .container {
-            max-width: 80%; /* Adjust the container width for mobile devices */
-        }
-    }
     </style>
 </head>
 <body>
