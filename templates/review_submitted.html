@@ -42,24 +42,8 @@
             color: #f0f7ff; /* Paragraph text color */
             font-size: 1.2em;
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Review Submitted</h1>
-        <p>Thank you for submitting your review. We appreciate your feedback!</p>
-    </div>
-</body>
-</html>
-<style>
-    /* ...existing styles... */
 
-    .container {
-        /* ...existing styles... */
-        animation: slide-in 1s ease-in-out forwards;
-    }
-
-    @keyframes slide-in {
+        @keyframes slide-in {
         0% {
             opacity: 0;
             transform: translateY(-100%);
@@ -69,4 +53,19 @@
             transform: translateY(0);
         }
     }
-</style>
+
+    /* Media query for mobile devices */
+    @media only screen and (max-width: 600px) {
+        .container {
+            max-width: 80%; /* Adjust the container width for mobile devices */
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Review Submitted</h1>
+        <p>Thank you for submitting your review. We appreciate your feedback!</p>
+    </div>
+</body>
+</html>
