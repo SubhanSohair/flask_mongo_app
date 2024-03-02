@@ -22,4 +22,4 @@ def load_reviews():
     reviews = list(reviews_collection.find())
     return reviews
 
-print(client)
+print(CON_STRING)
