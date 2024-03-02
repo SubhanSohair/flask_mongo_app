@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from db import save_review, load_reviews
+from jinja2 import escape
+
 
 app = Flask(__name__)
 app.secret_key = "subi"
