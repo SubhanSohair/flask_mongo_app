@@ -32,16 +32,13 @@ def qr():
 @app.route("/review_submitted", methods = ['POST','GET'])
 def review_submitted():
     data = request.form
-    # print(data['username'])
-    # print(data['message'])
     save_review(data['message'])
-
     return render_template("review_submitted.html")
 
 # Reviews Page
 @app.route("/reviews")
 def reviews():
-    reviews = load_reviews()  # Assuming you have a function to load reviews from the database
+    reviews = load_reviews()
     return render_template("reviews.html", reviews=reviews)
 
 # Delete All Reviews

@@ -26,7 +26,6 @@
         align-items: center;
         inline-size: 350px;
         overflow-wrap: break-word;
-
       }
 
       #container {
@@ -41,9 +40,8 @@
         overflow-y: scroll;
         overflow-x: hidden;
         margin-top: 100px;
-        border: 1px solid #ccc; 
+        border: 1px solid #ccc;
       }
-
 
       .example::-webkit-scrollbar {
         display: none;
@@ -152,11 +150,11 @@
       <a href="/qr">
         <img src="/static/QR.png" alt="QR Code" />
       </a>
-      <a href="/delete_reviews" style="text-decoration: none;">
+      <a href="/delete_reviews" style="text-decoration: none">
         <button class="noselect">
-          <span class="text">Delete All</span
-          ><span class="icon"
-            ><svg
+          <span class="text">Delete All</span>
+          <span class="icon">
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -164,10 +162,11 @@
             >
               <path
                 d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"
-              ></path></svg
-          ></span>
+              ></path>
+            </svg>
+          </span>
         </button>
-    </a>
+      </a>
     </nav>
     <div id="bg">
       <div class="example" id="container">
@@ -178,17 +177,17 @@
         </div>
       </div>
     </div>
-
-    <script>
-      // Function to reload the page after every 2 seconds
-      function reloadPage() {
-        setTimeout(function () {
-          location.reload();
-        }, 3000);
-      }
-
-      // Call the reloadPage function
-      reloadPage();
-    </script>
   </body>
 </html>
+
+<script>
+  // Function to reload the page after every 2 seconds
+  function reloadPage() {
+    setTimeout(function () {
+      location.reload();
+    }, 3000);
+  }
+
+  // Call the reloadPage function
+  reloadPage();
+</script>
