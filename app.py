@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 from db import save_review, load_reviews, delete_all_reviews
 
 
@@ -9,6 +9,19 @@ app.secret_key = "subi"
 @app.route("/")
 def hello_world():
     return render_template("index.html")
+
+
+@app.route("/api/reviews")
+def list_jobs():
+    reviews = load_reviews()
+    reviews_list = []
+    for review in reviews:
+        id = str(review['_id'])
+        review = review['review'].strip()
+        reviews_list.append({'id': id, 'review': review})
+
+    return jsonify(reviews_list)
+
 
 # QR Page
 @app.route("/qr")

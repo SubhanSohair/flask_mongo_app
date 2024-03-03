@@ -11,11 +11,9 @@ reviews_collection = db.get_collection('reviews')
 def save_review(review):
     reviews_collection.insert_one({'review': review})
 
-
 def load_reviews():
     reviews = list(reviews_collection.find())
     return reviews
 
 def delete_all_reviews():
     reviews_collection.delete_many({})
-
