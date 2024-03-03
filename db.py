@@ -8,8 +8,8 @@ reviews_collection = db.get_collection('reviews')
 
 
 # Save Review
-def save_review(username, review):
-    reviews_collection.insert_one({'username': username, 'review': review})
+def save_review(review):
+    reviews_collection.insert_one({'review': review})
 
 
 def load_reviews():

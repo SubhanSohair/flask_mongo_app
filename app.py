@@ -21,7 +21,7 @@ def review_submitted():
     data = request.form
     # print(data['username'])
     # print(data['message'])
-    save_review(data['username'], data['message'])
+    save_review(data['message'])
 
     return render_template("review_submitted.html")
 
