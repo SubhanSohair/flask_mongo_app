@@ -28,28 +28,32 @@
         overflow-wrap: break-word;
       }
 
+
       #container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        padding-top: 10px;
+        padding-bottom: 50px;
         text-align: center;
         width: 40%;
-        height: 80%;
+        height: 75%;
         border-radius: 25px;
-        overflow-y: scroll;
+        overflow-y: auto;
         overflow-x: hidden;
         margin-top: 100px;
         border: 1px solid #ccc;
+        scroll-behavior: smooth;
       }
 
       .example::-webkit-scrollbar {
         display: none;
       }
 
-      #top {
-        margin-top: 270px;
-      }
+      /* #top {
+        margin-top: 600px;
+      } */
 
       nav {
         background-color: #000000;
@@ -141,6 +145,21 @@
       button:active .icon svg {
         transform: scale(0.8);
       }
+
+      @keyframes popIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      #review {
+        animation: popIn 0.5s ease-in-out;
+      }
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -170,24 +189,59 @@
     </nav>
     <div id="bg">
       <div class="example" id="container">
-        <div id="top">
-          {% for review in reviews %}
-          <div id="review">{{ review.review }}</div>
-          {% endfor %}
-        </div>
+        <div id="top"></div>
       </div>
     </div>
   </body>
 </html>
 
 <script>
-  // Function to reload the page after every 2 seconds
-  function reloadPage() {
-    setTimeout(function () {
-      location.reload();
-    }, 3000);
+  // Global variables
+  var current = 0;
+  var latest = 0;
+
+  // Function to fetch reviews from API
+  function fetchReviews() {
+    $.ajax({
+      url: "/api/reviews",
+      method: "GET",
+      success: function (response) {
+        latest = response.length;
+        if (latest > current) {
+          var startIndex = current;
+          var endIndex = latest;
+          var reviews = response.slice(startIndex, endIndex);
+          displayReviews(reviews);
+          current = latest;
+        }
+      },
+      error: function (error) {
+        console.log("Error fetching reviews:", error);
+      },
+    });
   }
 
-  // Call the reloadPage function
-  reloadPage();
+  // Function to display reviews
+  function displayReviews(reviews) {
+    var reviewContainer = document.getElementById("top");
+    reviews.forEach(function (review) {
+      var reviewElement = document.createElement("div");
+      reviewElement.id = "review";
+      reviewElement.innerText = review.review;
+      reviewContainer.appendChild(reviewElement);
+    });
+  }
+
+  // Function to periodically fetch reviews
+  function fetchReviewsPeriodically() {
+    setInterval(function () {
+      fetchReviews();
+    }, 5000);
+  }
+
+  // Call the fetchReviews function on page load
+  $(document).ready(function () {
+    fetchReviews();
+    fetchReviewsPeriodically();
+  });
 </script>
