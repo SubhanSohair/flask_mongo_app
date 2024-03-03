@@ -15,3 +15,7 @@ def save_review(review):
 def load_reviews():
     reviews = list(reviews_collection.find())
     return reviews
+
+def delete_all_reviews():
+    reviews_collection.delete_many({})
+

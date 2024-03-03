@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request
-from db import save_review, load_reviews
+from flask import Flask, render_template, request, redirect
+from db import save_review, load_reviews, delete_all_reviews
 
 
 app = Flask(__name__)
@@ -31,3 +31,8 @@ def reviews():
     reviews = load_reviews()  # Assuming you have a function to load reviews from the database
     return render_template("reviews.html", reviews=reviews)
 
+# Delete All Reviews
+@app.route("/delete_reviews")
+def delete_reviews():
+    delete_all_reviews()
+    return redirect("/reviews")       
