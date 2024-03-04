@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reviews Page</title>
     <style>
       body {
@@ -12,8 +14,9 @@
       }
 
       #review {
-        background-color: #1f1e1e;
-        /* width: 350px; */
+        /* background-color: #1f1e1e; */
+        background-color: #1f1e1e75;
+        /* background-color: #3b353522; */
         padding: 10px;
         margin-bottom: 15px;
         border-radius: 5px;
@@ -170,6 +173,20 @@
       #review {
         animation: popIn 0.5s ease-in-out;
       }
+
+      
+      @media (max-width: 600px) {
+
+        nav{
+          height: 60px;
+        }
+
+        #container {
+          width: 80%;
+        }
+      }
+
+
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
