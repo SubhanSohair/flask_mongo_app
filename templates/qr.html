@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>QR-CODE</title>
     <style>
         body {
             background-color: black;
@@ -14,14 +18,29 @@
         }
         
         .qr-image {
-            width: 500px;
-            height: 500px;
+            width: 600px;
+            height: 600px;
             position: absolute;
             border-radius: 30px;
         }
+
+        
+        .back-link {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            z-index: 1;
+        }
+
+        .back-link i {
+            font-size: 50px;
+            color: white;
+        }
+
     </style>
 </head>
 <body>
+    <a href="/reviews" class="back-link"><i class="fa fa-angle-left"></i></a>
     <div class="qr-container">
         <img class="qr-image" src="static/QR.png" alt="QR Code">
     </div>
