@@ -7,10 +7,10 @@
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f5f5f5;
+        background-color: #060606;
         margin: 0;
         padding: 0;
-        height: 100vh;
+        height: fit-content;
       }
 
       #review {
@@ -41,14 +41,15 @@
         padding-bottom: 50px;
         text-align: center;
         width: 30%;
-        height: 75%;
+        height: 60%;
         border-radius: 25px;
         overflow-y: auto;
         overflow-x: hidden;
-        margin-top: 150px;
+        margin-top: 100px;
         margin-bottom: 20px;
         border: 1px solid #ccc;
         scroll-behavior: smooth;
+        margin-right: 550px;
       }
 
       .example::-webkit-scrollbar {
@@ -88,13 +89,40 @@
 
       #bg {
         background-color: #000000;
-        height: 100%;
+        height: 750px;
         display: flex;
-        flex-direction: column;
+        /* flex-direction: column; */
         align-items: center;
-        justify-content: center;
-        background-image: url(/static/R.jpg);
+        justify-content: space-between;
+        background-image: url(/static/R.jpg); 
       }
+
+      #percentage {
+        font-size: 15px;
+        color: rgb(253, 252, 252);
+        margin-bottom: 20px;
+        /* text-align: center; */
+        width: 250px;
+        height: 300px;
+        padding: 20px;
+        border-radius: 10px;
+        /* background-color: #736d6d; */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 100px;
+        margin-left: 30px;
+        border: 1px solid #ccc;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+      } 
+
+      /* #reviewInfo {
+        font-size: 10px;
+        color: white;
+        margin-bottom: 20px;
+        text-align: center;
+      } */
+
 
       button {
         width: 150px;
@@ -214,6 +242,8 @@
       <!-- </a> -->
     </nav>
     <div id="bg">
+      <div id="percentage">
+      </div>
       <div class="example" id="container">
         <div id="top"></div>
       </div>
@@ -262,7 +292,6 @@
 </script> -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <script>
   // Global variables
   var current = 0;
@@ -281,6 +310,31 @@
           var reviews = response.slice(startIndex, endIndex);
           displayReviews(reviews);
           current = latest;
+
+          // Calculate count and percentage of same reviews
+          var reviewCounts = {};
+          var totalCount = 0;
+          all_reviews = response;
+          all_reviews.forEach(function (review) {
+            var reviewName = review.review.toLowerCase();
+            if (reviewCounts[reviewName]) {
+              reviewCounts[reviewName]++;
+            } else {
+              reviewCounts[reviewName] = 1;
+            }
+            totalCount++;
+          });
+
+          // Display name, count, and percentage in the div with id "percentage"
+          var percentageDiv = document.getElementById("percentage");
+          percentageDiv.innerHTML = "";
+          for (var name in reviewCounts) {
+            var count = reviewCounts[name];
+            var percentage = ((count / totalCount) * 100).toFixed(2);
+            var reviewInfo = document.createElement("p");
+            reviewInfo.textContent = " - " + name + " : " + count + " (" + percentage + "%)";
+            percentageDiv.appendChild(reviewInfo);
+          }
         }
       },
       error: function (error) {
